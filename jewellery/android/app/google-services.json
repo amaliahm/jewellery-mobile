@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "399056522338",
+    "firebase_url": "https://jewellery-78c20-default-rtdb.firebaseio.com",
+    "project_id": "jewellery-78c20",
+    "storage_bucket": "jewellery-78c20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399056522338:android:241d05efec7d4d91fc553b",
+        "android_client_info": {
+          "package_name": "com.example.jewellery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKSO0SRZWrOm-Q5u2JNOIZJVTCqacItmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
