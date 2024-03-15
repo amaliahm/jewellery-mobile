@@ -3,9 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jewellery/firebase_options.dart';
+import 'package:jewellery/routes/pages.dart';
 import 'package:jewellery/widgets/style.dart';
-
-import 'routes/pages.dart';
 
 var user = FirebaseAuth.instance.currentUser;
 late bool isLoging;
@@ -44,7 +43,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      // home: NavigationHomeScreen(),
+      // home: FitnessAppHomeScreen(),
       defaultTransition: Transition.cupertino,
       opaqueRoute: Get.isOpaqueRouteDefault,
       popGesture: Get.isPopGestureEnable,
