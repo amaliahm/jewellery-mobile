@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                               onPressed: () async {
                                 String phone =
                                     "+213${_phone.text.substring(1, 10)}";
-                                if (_phone.text != null ) {
+                                if (_phone.text != null) {
                                   try {
                                     await FirebaseAuth.instance
                                         .verifyPhoneNumber(
@@ -140,8 +140,6 @@ class _LoginPageState extends State<LoginPage> {
                                       codeAutoRetrievalTimeout:
                                           (String verificationId) {},
                                     );
-                                    autoRetrievedSmsCodeForTesting:
-                                    '123456';
                                     // Get.toNamed(Routes.HOME);
                                   } catch (e) {
                                     print("errrrrror ${e}");

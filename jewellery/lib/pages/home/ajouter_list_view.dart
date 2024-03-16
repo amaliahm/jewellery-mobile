@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jewellery/pages/home/meals_list_data.dart';
+import 'package:jewellery/pages/home/ajouter_list_data.dart';
 import 'package:jewellery/pages/home/nombre_lignes.dart';
 
 class AjouterListView extends StatefulWidget {
@@ -17,7 +17,7 @@ class AjouterListView extends StatefulWidget {
 class _AjouterListViewState extends State<AjouterListView>
     with TickerProviderStateMixin {
   AnimationController? animationController;
-  List<MealsListData> mealsListData = MealsListData.tabIconsList;
+  List<AjouterListData> mealsListData = AjouterListData.tabIconsList;
 
   @override
   void initState() {
@@ -86,7 +86,7 @@ class MealsView extends StatelessWidget {
       {Key? key, this.mealsListData, this.animationController, this.animation})
       : super(key: key);
 
-  final MealsListData? mealsListData;
+  final AjouterListData? mealsListData;
   final AnimationController? animationController;
   final Animation<double>? animation;
 

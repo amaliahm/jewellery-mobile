@@ -185,7 +185,7 @@ class _SideBarState extends State<SideBar> {
             const Padding(
               padding: EdgeInsets.only(top: 8, left: 4),
               child: Text(
-                'Hey there!!',
+                'Hey There!!',
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   color: AppTheme.normalText,

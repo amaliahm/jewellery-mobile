@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../pages/home/body_measurement.dart';
 import '../fitness_app_theme.dart';
 import '../ui_view/glass_view.dart';
 import '../ui_view/mediterranean_diet_view.dart';
@@ -115,15 +114,6 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       ),
     );
 
-    listViews.add(
-      BodyMeasurementView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
     listViews.add(
       TitleView(
         titleTxt: 'Water',
