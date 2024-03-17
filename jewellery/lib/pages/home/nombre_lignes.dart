@@ -133,16 +133,38 @@ class MediterranesnDietView extends StatelessWidget {
                                         height: 48,
                                         width: 2,
                                         decoration: BoxDecoration(
-                                          color: HexColor('#F1B440')
+                                          color: HexColor('#87A0E5')
                                               .withOpacity(0.5),
                                           borderRadius: const BorderRadius.all(
                                               Radius.circular(4.0)),
                                         ),
                                       ),
                                       number_function(
-                                          title: 'Les achats',
+                                          title: 'Les ventes',
                                           number: 15,
-                                          subTitle: 'opérations d\'achat')
+                                          subTitle: 'opérations de vente')
+                                    ],
+                                  ),
+                                  line(),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 48,
+                                        width: 2,
+                                        decoration: BoxDecoration(
+                                          color: HexColor('#F56E98')
+                                              .withOpacity(0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(4.0)),
+                                        ),
+                                      ),
+                                      number_function(
+                                          title: 'Les versements',
+                                          number: 15,
+                                          subTitle: 'opérations de versement')
                                     ],
                                   ),
                                   line(),
@@ -162,9 +184,53 @@ class MediterranesnDietView extends StatelessWidget {
                                         ),
                                       ),
                                       number_function(
-                                          title: 'Les achats',
+                                          title: 'Les retours',
                                           number: 15,
-                                          subTitle: 'opérations d\'achat')
+                                          subTitle: 'opérations de retour')
+                                    ],
+                                  ),
+                                  line(),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 48,
+                                        width: 2,
+                                        decoration: BoxDecoration(
+                                          color: HexColor('#87A0E5')
+                                              .withOpacity(0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(4.0)),
+                                        ),
+                                      ),
+                                      number_function(
+                                          title: 'Les magasin',
+                                          number: 15,
+                                          subTitle: 'magasin')
+                                    ],
+                                  ),
+                                  line(),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 48,
+                                        width: 2,
+                                        decoration: BoxDecoration(
+                                          color: HexColor('#F56E98')
+                                              .withOpacity(0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(4.0)),
+                                        ),
+                                      ),
+                                      number_function(
+                                          title: 'Les réparations',
+                                          number: 15,
+                                          subTitle: 'réparations')
                                     ],
                                   ),
                                   line(),
@@ -184,9 +250,54 @@ class MediterranesnDietView extends StatelessWidget {
                                         ),
                                       ),
                                       number_function(
-                                          title: 'Les achats',
+                                          title: 'Les commandes',
                                           number: 15,
-                                          subTitle: 'opérations d\'achat')
+                                          subTitle: 'opérations de commande')
+                                    ],
+                                  ),
+                                  line(),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 48,
+                                        width: 2,
+                                        decoration: BoxDecoration(
+                                          color: HexColor('#87A0E5')
+                                              .withOpacity(0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(4.0)),
+                                        ),
+                                      ),
+                                      number_function(
+                                          title: 'Les importations',
+                                          number: 15,
+                                          subTitle: 'importateur')
+                                    ],
+                                  ),
+                                  line(),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 48,
+                                        width: 2,
+                                        decoration: BoxDecoration(
+                                          color: HexColor('#F56E98')
+                                              .withOpacity(0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(4.0)),
+                                        ),
+                                      ),
+                                      number_function(
+                                          title: 'Les importations',
+                                          number: 15,
+                                          subTitle:
+                                              'opérations d\'achat d\'importation')
                                     ],
                                   ),
                                   line(),
@@ -206,9 +317,10 @@ class MediterranesnDietView extends StatelessWidget {
                                         ),
                                       ),
                                       number_function(
-                                          title: 'Les achats',
+                                          title: 'Les importations',
                                           number: 15,
-                                          subTitle: 'opérations d\'achat')
+                                          subTitle:
+                                              'opérations de versement d\'importation')
                                     ],
                                   ),
                                   line(),
@@ -221,104 +333,16 @@ class MediterranesnDietView extends StatelessWidget {
                                         height: 48,
                                         width: 2,
                                         decoration: BoxDecoration(
-                                          color: HexColor('#F1B440')
+                                          color: HexColor('#87A0E5')
                                               .withOpacity(0.5),
                                           borderRadius: const BorderRadius.all(
                                               Radius.circular(4.0)),
                                         ),
                                       ),
                                       number_function(
-                                          title: 'Les achats',
+                                          title: 'Les produits',
                                           number: 15,
-                                          subTitle: 'opérations d\'achat')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F1B440')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les achats',
-                                          number: 15,
-                                          subTitle: 'opérations d\'achat')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F1B440')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les achats',
-                                          number: 15,
-                                          subTitle: 'opérations d\'achat')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F1B440')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les achats',
-                                          number: 15,
-                                          subTitle: 'opérations d\'achat')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F1B440')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les achats',
-                                          number: 15,
-                                          subTitle: 'opérations d\'achat')
+                                          subTitle: 'produits')
                                     ],
                                   ),
                                 ],

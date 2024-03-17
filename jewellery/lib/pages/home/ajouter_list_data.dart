@@ -36,9 +36,39 @@ class AjouterListData {
     ),
     AjouterListData(
       imagePath: 'assets/icons/vente.png',
-      titleTxt: 'Operations de vente',
+      titleTxt: 'Opérations de vente',
       startColor: '#6F72CA',
       endColor: '#1E1466',
+    ),
+    AjouterListData(
+      imagePath: 'assets/icons/versement.png',
+      titleTxt: 'Opération de versement',
+      startColor: '#FA7D82',
+      endColor: '#FFB295',
+    ),
+    AjouterListData(
+      imagePath: 'assets/icons/retours.png',
+      titleTxt: 'Opération de retour',
+      startColor: '#738AE6',
+      endColor: '#5C5EDD',
+    ),
+    AjouterListData(
+      imagePath: 'assets/icons/magasin.png',
+      titleTxt: 'Magasin',
+      startColor: '#FE95B6',
+      endColor: '#FF5287',
+    ),
+    AjouterListData(
+      imagePath: 'assets/icons/importation.png',
+      titleTxt: 'Importation',
+      startColor: '#6F72CA',
+      endColor: '#1E1466',
+    ),
+    AjouterListData(
+      imagePath: 'assets/icons/command.png',
+      titleTxt: 'Commande',
+      startColor: '#FA7D82',
+      endColor: '#FFB295',
     ),
   ];
 }

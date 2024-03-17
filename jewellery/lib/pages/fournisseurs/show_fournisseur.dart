@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 
 import '../home/nombre_lignes.dart';
 
-class ShowClient extends StatefulWidget {
+class ShowFournisseur extends StatefulWidget {
   final String nom;
 
-  const ShowClient({Key? key, required this.nom}) : super(key: key);
+  const ShowFournisseur({Key? key, required this.nom}) : super(key: key);
 
   @override
   _ShowElementState createState() => _ShowElementState();
 }
 
-class _ShowElementState extends State<ShowClient> {
+class _ShowElementState extends State<ShowFournisseur> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

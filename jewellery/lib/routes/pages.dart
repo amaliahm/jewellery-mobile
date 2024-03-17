@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:jewellery/pages/clients/clients.dart';
+import 'package:jewellery/pages/fournisseurs/fournisseur.dart';
 import 'package:jewellery/registration/login_screen.dart';
 import 'package:jewellery/registration/signup_screen.dart';
 import 'package:jewellery/registration/welcome_page.dart';
@@ -31,6 +32,10 @@ class AppPages {
     GetPage(
       name: Routes.CLIENTS,
       page: () => const Clients(),
+    ),
+    GetPage(
+      name: Routes.FOURNISSEURS,
+      page: () => const Fournisseurs(),
     ),
   ];
 }

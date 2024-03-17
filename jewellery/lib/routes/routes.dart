@@ -9,4 +9,5 @@ abstract class Routes {
   static const HOME = '/navigation_home_screen';
   static const CODE = '/code_page';
   static const CLIENTS = '/clients';
+  static const FOURNISSEURS = '/fournisseurs';
 }

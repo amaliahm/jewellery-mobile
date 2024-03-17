@@ -3,7 +3,6 @@ import 'package:jewellery/pages/home/TitleView.dart';
 import 'package:jewellery/pages/home/ajouter_list_view.dart';
 import 'package:jewellery/pages/home/footer_home_page.dart';
 import 'package:jewellery/pages/home/nombre_lignes.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 
 class Book {
   final int id;
@@ -39,25 +38,26 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   double topBarOpacity = 0.0;
 
   void _fetchBooks() {
-    WebSocketChannel channel;
-    print('1111');
+    // WebSocketChannel channel;
+    // print('1111');
 
-    try {
-      print('2222');
-      channel = WebSocketChannel.connect(Uri.parse('ws://127.0.1.1:3000'));
-      print('3333');
-      channel.sink.add('message');
-      print('4444');
+    // try {
+    //   print('2222');
+    //   channel = WebSocketChannel.connect(Uri.parse('ws://127.0.1.1:3000'));
+    //   print('3333');
+    //   channel.sink.add('message');
+    //   print('4444');
 
-      channel.stream.listen((message) {
-        print('5555');
-        print(message);
-        print('6666');
-        channel.sink.close();
-      });
-    } catch (e) {
-      print('7777');
-    }
+    //   channel.stream.listen((message) {
+    //     print('5555');
+    //     print(message);
+    //     print('6666');
+    //     channel.sink.close();
+    //   });
+    // } catch (e) {
+    //   print('7777');
+    // }
+
     // print('5555');
     // final response = await http.get(Uri.parse('http://127.0.1.1:3000'));
     // print('$response ######');

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jewellery/pages/achats/achats.dart';
 import 'package:jewellery/pages/clients/clients.dart';
 import 'package:jewellery/pages/command/commands.dart';
+import 'package:jewellery/pages/fournisseurs/fournisseur.dart';
 import 'package:jewellery/pages/home/home_page.dart';
 import 'package:jewellery/pages/home/home_screen.dart';
 import 'package:jewellery/pages/home/sidebar.dart';
@@ -40,10 +41,8 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
             drawerWidth: MediaQuery.of(context).size.width * 0.75,
             onDrawerCall: (DrawerIndex drawerIndexdata) {
               changeIndex(drawerIndexdata);
-              //callback from drawer for replace screen as user need with passing DrawerIndex(Enum index)
             },
             screenView: screenView,
-            //we replace screen view as we need on navigate starting screens like MyHomePage, HelpScreen, FeedbackScreen, etc...
           ),
         ),
       ),
@@ -85,6 +84,26 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
           });
           break;
         case DrawerIndex.IMPORTATION:
+          setState(() {
+            screenView = const Importation();
+          });
+          break;
+        case DrawerIndex.FOURNISSEURS:
+          setState(() {
+            screenView = const Fournisseurs();
+          });
+          break;
+        case DrawerIndex.PRODUITS:
+          setState(() {
+            screenView = const Importation();
+          });
+          break;
+        case DrawerIndex.VENTES:
+          setState(() {
+            screenView = const Importation();
+          });
+          break;
+        case DrawerIndex.RETOURS:
           setState(() {
             screenView = const Importation();
           });

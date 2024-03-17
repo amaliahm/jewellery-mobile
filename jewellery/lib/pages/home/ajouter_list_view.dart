@@ -101,14 +101,14 @@ class MealsView extends StatelessWidget {
             transform: Matrix4.translationValues(
                 100 * (1.0 - animation!.value), 0.0, 0.0),
             child: SizedBox(
-              width: 130,
+              width: 140,
               child: Stack(
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(
                         top: 32, left: 8, right: 8, bottom: 16),
                     child: Container(
-                      width: 130,
+                      width: 140,
                       decoration: BoxDecoration(
                         boxShadow: <BoxShadow>[
                           BoxShadow(
@@ -134,7 +134,7 @@ class MealsView extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(
-                            top: 54, left: 16, right: 16, bottom: 8),
+                            top: 60, left: 16, right: 16, bottom: 8),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,9 +1,13 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jewellery/routes/pages.dart';
 import 'package:jewellery/widgets/show_dialog.dart';
 import 'package:jewellery/widgets/style.dart';
+
+import 'nombre_lignes.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar(
@@ -103,7 +107,7 @@ class _SideBarState extends State<SideBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.purple.withOpacity(0.5),
+      backgroundColor: HexColor('#FFB295'),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -167,7 +171,7 @@ class _SideBarState extends State<SideBar> {
                         shape: BoxShape.circle,
                         boxShadow: <BoxShadow>[
                           BoxShadow(
-                              color: AppTheme.grey.withOpacity(0.6),
+                              color: AppTheme.grey.withOpacity(0.0),
                               offset: const Offset(2.0, 4.0),
                               blurRadius: 8),
                         ],
@@ -235,7 +239,7 @@ class _SideBarState extends State<SideBar> {
                     height: 46.0,
                     decoration: BoxDecoration(
                       color: widget.screenIndex == listData.index
-                          ? Colors.blue
+                          ? Colors.white.withOpacity(0.8)
                           : Colors.transparent,
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(0),

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:jewellery/pages/clients/show_client.dart';
 import 'package:jewellery/widgets/style.dart';
 
+import '../home/nombre_lignes.dart';
+
 class Clients extends StatefulWidget {
   const Clients({super.key});
 
@@ -21,7 +23,7 @@ class _ClientsState extends State<Clients> {
         title: const Center(
           child: Text(
             "Les Clients",
-            style: TextStyle(color: AppTheme.blue, fontSize: 25),
+            style: TextStyle(color: AppTheme.darkText, fontSize: 25),
           ),
         ),
       ),
@@ -68,14 +70,23 @@ class _ClientsState extends State<Clients> {
           padding: const EdgeInsets.all(20),
           margin: const EdgeInsets.only(bottom: 20),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: AppTheme.blue,
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.shade400,
-                    blurRadius: 10,
-                    offset: const Offset(0, 10))
-              ]),
+            color: HexColor('#FFB295'),
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey.shade400,
+                  blurRadius: 10,
+                  offset: const Offset(0, 10))
+            ],
+            // gradient: LinearGradient(
+            //   colors: <HexColor>[
+            //     HexColor('#FA7D82'),
+            //     HexColor('#FFB295'),
+            //   ],
+            //   begin: Alignment.topLeft,
+            //   end: Alignment.bottomRight,
+            // ),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -114,12 +125,12 @@ class _ClientsState extends State<Clients> {
                       child: Container(
                         width: 35,
                         height: 35,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.white),
-                        child: const Center(
-                          child: Icon(
-                            Icons.person,
-                            size: 20,
+                        decoration: const BoxDecoration(shape: BoxShape.circle),
+                        child: Center(
+                          child: SizedBox(
+                            width: 100,
+                            height: 100,
+                            child: Image.asset('assets/icons/client.png'),
                           ),
                         ),
                       ))

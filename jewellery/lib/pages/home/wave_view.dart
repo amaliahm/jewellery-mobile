@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -78,54 +80,54 @@ class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      child: new AnimatedBuilder(
-        animation: new CurvedAnimation(
+      child: AnimatedBuilder(
+        animation: CurvedAnimation(
           parent: animationController!,
           curve: Curves.easeInOut,
         ),
-        builder: (context, child) => new Stack(
+        builder: (context, child) => Stack(
           children: <Widget>[
-            new ClipPath(
-              child: new Container(
+            ClipPath(
+              child: Container(
                 decoration: BoxDecoration(
-                  color: FitnessAppTheme.nearlyDarkBlue.withOpacity(0.5),
-                  borderRadius: BorderRadius.only(
+                  color: AppTheme.nearlyDarkBlue.withOpacity(0.5),
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(80.0),
                       bottomLeft: Radius.circular(80.0),
                       bottomRight: Radius.circular(80.0),
                       topRight: Radius.circular(80.0)),
                   gradient: LinearGradient(
                     colors: [
-                      FitnessAppTheme.nearlyDarkBlue.withOpacity(0.2),
-                      FitnessAppTheme.nearlyDarkBlue.withOpacity(0.5)
+                      AppTheme.nearlyDarkBlue.withOpacity(0.2),
+                      AppTheme.nearlyDarkBlue.withOpacity(0.5)
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                 ),
               ),
-              clipper: new WaveClipper(animationController!.value, animList1),
+              clipper: WaveClipper(animationController!.value, animList1),
             ),
-            new ClipPath(
-              child: new Container(
+            ClipPath(
+              child: Container(
                 decoration: BoxDecoration(
-                  color: FitnessAppTheme.nearlyDarkBlue,
+                  color: AppTheme.nearlyDarkBlue,
                   gradient: LinearGradient(
                     colors: [
-                      FitnessAppTheme.nearlyDarkBlue.withOpacity(0.4),
-                      FitnessAppTheme.nearlyDarkBlue
+                      AppTheme.nearlyDarkBlue.withOpacity(0.4),
+                      AppTheme.nearlyDarkBlue
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(80.0),
                       bottomLeft: Radius.circular(80.0),
                       bottomRight: Radius.circular(80.0),
                       topRight: Radius.circular(80.0)),
                 ),
               ),
-              clipper: new WaveClipper(animationController!.value, animList2),
+              clipper: WaveClipper(animationController!.value, animList2),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 48),
@@ -137,25 +139,25 @@ class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
                     Text(
                       widget.percentageValue.round().toString(),
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: FitnessAppTheme.fontName,
+                      style: const TextStyle(
+                        fontFamily: AppTheme.fontName,
                         fontWeight: FontWeight.w500,
                         fontSize: 24,
                         letterSpacing: 0.0,
-                        color: FitnessAppTheme.white,
+                        color: AppTheme.white,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 3.0),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 3.0),
                       child: Text(
                         '%',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontFamily: FitnessAppTheme.fontName,
+                          fontFamily: AppTheme.fontName,
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
                           letterSpacing: 0.0,
-                          color: FitnessAppTheme.white,
+                          color: AppTheme.white,
                         ),
                       ),
                     ),
@@ -167,16 +169,17 @@ class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
               top: 0,
               left: 6,
               bottom: 8,
-              child: new ScaleTransition(
+              child: ScaleTransition(
                 alignment: Alignment.center,
                 scale: Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
                     parent: animationController!,
-                    curve: Interval(0.0, 1.0, curve: Curves.fastOutSlowIn))),
+                    curve:
+                        const Interval(0.0, 1.0, curve: Curves.fastOutSlowIn))),
                 child: Container(
                   width: 2,
                   height: 2,
                   decoration: BoxDecoration(
-                    color: FitnessAppTheme.white.withOpacity(0.4),
+                    color: AppTheme.white.withOpacity(0.4),
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -186,16 +189,17 @@ class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
               left: 24,
               right: 0,
               bottom: 16,
-              child: new ScaleTransition(
+              child: ScaleTransition(
                 alignment: Alignment.center,
                 scale: Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
                     parent: animationController!,
-                    curve: Interval(0.4, 1.0, curve: Curves.fastOutSlowIn))),
+                    curve:
+                        const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn))),
                 child: Container(
                   width: 4,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: FitnessAppTheme.white.withOpacity(0.4),
+                    color: AppTheme.white.withOpacity(0.4),
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -205,16 +209,17 @@ class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
               left: 0,
               right: 24,
               bottom: 32,
-              child: new ScaleTransition(
+              child: ScaleTransition(
                 alignment: Alignment.center,
                 scale: Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
                     parent: animationController!,
-                    curve: Interval(0.6, 0.8, curve: Curves.fastOutSlowIn))),
+                    curve:
+                        const Interval(0.6, 0.8, curve: Curves.fastOutSlowIn))),
                 child: Container(
                   width: 3,
                   height: 3,
                   decoration: BoxDecoration(
-                    color: FitnessAppTheme.white.withOpacity(0.4),
+                    color: AppTheme.white.withOpacity(0.4),
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -224,14 +229,14 @@ class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
               top: 0,
               right: 20,
               bottom: 0,
-              child: new Transform(
-                transform: new Matrix4.translationValues(
+              child: Transform(
+                transform: Matrix4.translationValues(
                     0.0, 16 * (1.0 - animationController!.value), 0.0),
                 child: Container(
                   width: 4,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: FitnessAppTheme.white.withOpacity(
+                    color: AppTheme.white.withOpacity(
                         animationController!.status == AnimationStatus.reverse
                             ? 0.0
                             : 0.4),
@@ -264,7 +269,7 @@ class WaveClipper extends CustomClipper<Path> {
 
   @override
   Path getClip(Size size) {
-    Path path = new Path();
+    Path path = Path();
 
     path.addPolygon(waveList1, false);
 
