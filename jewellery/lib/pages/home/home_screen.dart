@@ -4,22 +4,6 @@ import 'package:jewellery/pages/home/ajouter_list_view.dart';
 import 'package:jewellery/pages/home/footer_home_page.dart';
 import 'package:jewellery/pages/home/nombre_lignes.dart';
 
-class Book {
-  final int id;
-  final String title;
-  final String author;
-
-  Book({required this.id, required this.title, required this.author});
-
-  factory Book.fromJson(Map<String, dynamic> json) {
-    return Book(
-      id: json['id'],
-      title: json['title'],
-      author: json['author'],
-    );
-  }
-}
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -30,54 +14,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
 
-  List<Book> _books = [];
-
   List<Widget> listViews = <Widget>[];
   AnimationController? animationController;
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
 
-  void _fetchBooks() {
-    // WebSocketChannel channel;
-    // print('1111');
-
-    // try {
-    //   print('2222');
-    //   channel = WebSocketChannel.connect(Uri.parse('ws://127.0.1.1:3000'));
-    //   print('3333');
-    //   channel.sink.add('message');
-    //   print('4444');
-
-    //   channel.stream.listen((message) {
-    //     print('5555');
-    //     print(message);
-    //     print('6666');
-    //     channel.sink.close();
-    //   });
-    // } catch (e) {
-    //   print('7777');
-    // }
-
-    // print('5555');
-    // final response = await http.get(Uri.parse('http://127.0.1.1:3000'));
-    // print('$response ######');
-    // print('1111');
-    // if (response.statusCode == 200) {
-    //   print('2222');
-    //   final List<dynamic> json = jsonDecode(response.body);
-    //   setState(() {
-    //     print('3333');
-    //     _books = json.map((item) => Book.fromJson(item)).toList();
-    //   });
-    // } else {
-    //   print('4444');
-    //   throw Exception('Failed to load books');
-    // }
-  }
-
   @override
   void initState() {
-    _fetchBooks();
     animationController = AnimationController(
         duration: const Duration(milliseconds: 2000), vsync: this);
     super.initState();
@@ -179,8 +122,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    print("+++++++++++++++++++");
-    print(_books);
     return Container(
       color: const Color(0xFFF2F3F8),
       child: Scaffold(

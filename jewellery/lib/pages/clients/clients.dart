@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:jewellery/pages/clients/show_client.dart';
+import 'package:jewellery/pages/home/backend.dart';
 import 'package:jewellery/widgets/style.dart';
 
 import '../home/nombre_lignes.dart';
@@ -13,8 +14,16 @@ class Clients extends StatefulWidget {
 }
 
 class _ClientsState extends State<Clients> {
+  dynamic client;
+  @override
+  void initState() {
+    client = fetch_view_client();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    print(client);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -32,18 +41,35 @@ class _ClientsState extends State<Clients> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: <Widget>[
-              const SizedBox(
-                height: 20,
-              ),
-              FadeInUp(
-                  duration: const Duration(milliseconds: 1500),
-                  child: makeItem(context: context)),
-              FadeInUp(
-                  duration: const Duration(milliseconds: 1600),
-                  child: makeItem(context: context)),
-              FadeInUp(
-                  duration: const Duration(milliseconds: 1700),
-                  child: makeItem(context: context)),
+              FutureBuilder(
+                  future: client,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const CircularProgressIndicator(
+                        color: Color.fromRGBO(0, 36, 107, 1),
+                      );
+                    } else {
+                      if (!snapshot.hasData) {
+                        return const Center(
+                          child: Text('u have no clients'),
+                        );
+                      } else {
+                        final data = snapshot.data!;
+                        return SizedBox(
+                          height: MediaQuery.of(context).size.height - 100,
+                          child: ListView.builder(
+                              itemCount: 4,
+                              itemBuilder: (context, index) {
+                                return FadeInUp(
+                                    duration:
+                                        const Duration(milliseconds: 1500),
+                                    child:
+                                        makeItem(context: context, data: data));
+                              }),
+                        );
+                      }
+                    }
+                  }),
             ],
           ),
         ),
@@ -51,8 +77,9 @@ class _ClientsState extends State<Clients> {
     );
   }
 
-  Widget makeItem({context}) {
-    String nom = 'Nom';
+  Widget makeItem({context, data}) {
+    print(data[0]);
+    String nom = 'nom';
     return Hero(
       tag: 'tag',
       child: GestureDetector(
