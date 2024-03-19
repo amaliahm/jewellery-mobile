@@ -24,17 +24,18 @@ List<Book> books = [];
 
 const API = 'http://192.168.43.136:3000/';
 
-Future<dynamic> fetch_view_client() async {
+fetch_view_client() async {
   final response = await http.get(Uri.parse(API));
 
   if (response.statusCode == 200) {
     var data = jsonDecode(response.body);
     var client = data['view_client'];
+    print('client');
     print(client);
-    return client;
+    return [data['view_client']];
   } else {
     print('Failed to load data: ${response.statusCode}');
-    return;
+    return [];
   }
 }
 
