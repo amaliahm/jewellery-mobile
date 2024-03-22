@@ -1,5 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
-
+// ignore_for_file: non_constant_identifier_names, avoid_print
 import 'dart:ffi';
 
 import 'package:animate_do/animate_do.dart';
@@ -131,36 +130,37 @@ class _ClientsState extends State<Clients> {
                         ),
                       );
                     } else {
-                      if (snapshot.hasData && snapshot.data != null) {
+                      if (!snapshot.hasData) {
                         return const Center(
-                          child: Text('u have no clients 1'),
+                          child: Text('Vous n\'avez pas des clients'),
                         );
                       } else {
                         final data = snapshot.data!;
-                        if (data is List) {
-                          if (data.isNotEmpty) {
-                            return SizedBox(
-                              height: MediaQuery.of(context).size.height - 100,
-                              child: ListView.builder(
-                                  itemCount: data.length,
-                                  itemBuilder: (context, index) {
-                                    return FadeInUp(
-                                        duration:
-                                            const Duration(milliseconds: 1500),
-                                        child: makeItem(
-                                            context: context, data: data));
-                                  }),
-                            );
-                          } else {
-                            return const Center(
-                              child: Text('u have no clients 2'),
-                            );
-                          }
-                        } else {
-                          return const Center(
-                            child: Text('u have no clients 3'),
-                          );
-                        }
+                        return SizedBox(
+                          height: MediaQuery.of(context).size.height - 100,
+                          child: ListView.builder(
+                              itemCount: data.length,
+                              itemBuilder: (context, index) {
+                                var item = data[index];
+                                return FadeInUp(
+                                    duration:
+                                        const Duration(milliseconds: 1500),
+                                    child:
+                                        makeItem(context: context, data: item));
+                              }),
+                        );
+                        //   if (data is List) {
+                        //     if (data.isNotEmpty) {
+                        //     } else {
+                        //       return const Center(
+                        //         child: Text('u have no clients 2'),
+                        //       );
+                        //     }
+                        //   } else {
+                        //     return const Center(
+                        //       child: Text('u have no clients 3'),
+                        //     );
+                        //   }
                       }
                     }
                   }),
@@ -172,17 +172,16 @@ class _ClientsState extends State<Clients> {
   }
 
   Widget makeItem({context, data}) {
-    print(data[0]);
-    String nom = 'nom';
+    String nom = data['nom_client'];
     return Hero(
-      tag: 'tag',
+      tag: data['id_client'],
       child: GestureDetector(
         onTap: () {
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => ShowClient(
-                        nom: nom,
+                        data: data,
                       )));
         },
         child: Container(
@@ -199,14 +198,6 @@ class _ClientsState extends State<Clients> {
                   blurRadius: 10,
                   offset: const Offset(0, 10))
             ],
-            // gradient: LinearGradient(
-            //   colors: <HexColor>[
-            //     HexColor('#FA7D82'),
-            //     HexColor('#FFB295'),
-            //   ],
-            //   begin: Alignment.topLeft,
-            //   end: Alignment.bottomRight,
-            // ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -233,10 +224,10 @@ class _ClientsState extends State<Clients> {
                         ),
                         FadeInUp(
                             duration: const Duration(milliseconds: 1100),
-                            child: const Text(
-                              "Telephone",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
+                            child: Text(
+                              data['telephone'],
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 20),
                             )),
                       ],
                     ),
@@ -259,9 +250,9 @@ class _ClientsState extends State<Clients> {
               ),
               FadeInUp(
                   duration: const Duration(milliseconds: 1200),
-                  child: const Text(
-                    "Titre",
-                    style: TextStyle(
+                  child: Text(
+                    data['wilaya'] + ', ' + data['ville'],
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 30,
                         fontWeight: FontWeight.bold),

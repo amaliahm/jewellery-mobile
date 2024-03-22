@@ -1,4 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
+
+import 'backend.dart';
 
 class HexColor extends Color {
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
@@ -12,7 +16,7 @@ class HexColor extends Color {
   }
 }
 
-class MediterranesnDietView extends StatelessWidget {
+class MediterranesnDietView extends StatefulWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
 
@@ -21,15 +25,25 @@ class MediterranesnDietView extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<MediterranesnDietView> createState() => _MediterranesnDietViewState();
+}
+
+class _MediterranesnDietViewState extends State<MediterranesnDietView> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: animationController!,
+      animation: widget.animationController!,
       builder: (BuildContext context, Widget? child) {
         return FadeTransition(
-          opacity: animation!,
+          opacity: widget.animation!,
           child: Transform(
             transform: Matrix4.translationValues(
-                0.0, 30 * (1.0 - animation!.value), 0.0),
+                0.0, 30 * (1.0 - widget.animation!.value), 0.0),
             child: Padding(
               padding: const EdgeInsets.only(
                   left: 24, right: 24, top: 16, bottom: 18),
@@ -53,304 +67,357 @@ class MediterranesnDietView extends StatelessWidget {
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 16, left: 16, right: 16),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 8, right: 8, top: 4),
-                              child: Column(
-                                children: <Widget>[
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#87A0E5')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
+                      child: FutureBuilder(
+                          future: fetchData(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const Center(
+                                child: CircularProgressIndicator(
+                                  color: Color.fromRGBO(0, 36, 107, 1),
+                                ),
+                              );
+                            } else {
+                              if (!snapshot.hasData) {
+                                return const Center(
+                                  child: SizedBox(),
+                                );
+                              } else {
+                                final data = snapshot.data!;
+                                print('99999***');
+                                print(data);
+                                return Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 8, right: 8, top: 4),
+                                        child: Column(
+                                          children: <Widget>[
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  height: 48,
+                                                  width: 2,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#87A0E5')
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                4.0)),
+                                                  ),
+                                                ),
+                                                number_function(
+                                                    title: 'Les Clients',
+                                                    number: 5,
+                                                    subTitle: 'clients')
+                                              ],
+                                            ),
+                                            line(),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  height: 48,
+                                                  width: 2,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#F56E98')
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                4.0)),
+                                                  ),
+                                                ),
+                                                number_function(
+                                                    title: 'Les Fournisseurs',
+                                                    number: 10,
+                                                    subTitle: 'fournisseurs')
+                                              ],
+                                            ),
+                                            line(),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  height: 48,
+                                                  width: 2,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#F1B440')
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                4.0)),
+                                                  ),
+                                                ),
+                                                number_function(
+                                                    title: 'Les achats',
+                                                    number: 15,
+                                                    subTitle:
+                                                        'opérations d\'achat')
+                                              ],
+                                            ),
+                                            line(),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  height: 48,
+                                                  width: 2,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#87A0E5')
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                4.0)),
+                                                  ),
+                                                ),
+                                                number_function(
+                                                    title: 'Les ventes',
+                                                    number: 15,
+                                                    subTitle:
+                                                        'opérations de vente')
+                                              ],
+                                            ),
+                                            line(),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  height: 48,
+                                                  width: 2,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#F56E98')
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                4.0)),
+                                                  ),
+                                                ),
+                                                number_function(
+                                                    title: 'Les versements',
+                                                    number: 15,
+                                                    subTitle:
+                                                        'opérations de versement')
+                                              ],
+                                            ),
+                                            line(),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  height: 48,
+                                                  width: 2,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#F1B440')
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                4.0)),
+                                                  ),
+                                                ),
+                                                number_function(
+                                                    title: 'Les retours',
+                                                    number: 15,
+                                                    subTitle:
+                                                        'opérations de retour')
+                                              ],
+                                            ),
+                                            line(),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  height: 48,
+                                                  width: 2,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#87A0E5')
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                4.0)),
+                                                  ),
+                                                ),
+                                                number_function(
+                                                    title: 'Les magasin',
+                                                    number: 15,
+                                                    subTitle: 'magasin')
+                                              ],
+                                            ),
+                                            line(),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  height: 48,
+                                                  width: 2,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#F56E98')
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                4.0)),
+                                                  ),
+                                                ),
+                                                number_function(
+                                                    title: 'Les réparations',
+                                                    number: 15,
+                                                    subTitle: 'réparations')
+                                              ],
+                                            ),
+                                            line(),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  height: 48,
+                                                  width: 2,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#F1B440')
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                4.0)),
+                                                  ),
+                                                ),
+                                                number_function(
+                                                    title: 'Les commandes',
+                                                    number: 15,
+                                                    subTitle:
+                                                        'opérations de commande')
+                                              ],
+                                            ),
+                                            line(),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  height: 48,
+                                                  width: 2,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#87A0E5')
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                4.0)),
+                                                  ),
+                                                ),
+                                                number_function(
+                                                    title: 'Les importations',
+                                                    number: 15,
+                                                    subTitle: 'importateur')
+                                              ],
+                                            ),
+                                            line(),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  height: 48,
+                                                  width: 2,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#F56E98')
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                4.0)),
+                                                  ),
+                                                ),
+                                                number_function(
+                                                    title: 'Les importations',
+                                                    number: 15,
+                                                    subTitle:
+                                                        'opérations d\'achat d\'importation')
+                                              ],
+                                            ),
+                                            line(),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  height: 48,
+                                                  width: 2,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#F1B440')
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                4.0)),
+                                                  ),
+                                                ),
+                                                number_function(
+                                                    title: 'Les importations',
+                                                    number: 15,
+                                                    subTitle:
+                                                        'opérations de versement d\'importation')
+                                              ],
+                                            ),
+                                            line(),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                  height: 48,
+                                                  width: 2,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#87A0E5')
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                4.0)),
+                                                  ),
+                                                ),
+                                                number_function(
+                                                    title: 'Les produits',
+                                                    number: 15,
+                                                    subTitle: 'produits')
+                                              ],
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                      number_function(
-                                          title: 'Les Clients',
-                                          number: 20,
-                                          subTitle: 'clients')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F56E98')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les Fournisseurs',
-                                          number: 10,
-                                          subTitle: 'fournisseurs')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F1B440')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les achats',
-                                          number: 15,
-                                          subTitle: 'opérations d\'achat')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#87A0E5')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les ventes',
-                                          number: 15,
-                                          subTitle: 'opérations de vente')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F56E98')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les versements',
-                                          number: 15,
-                                          subTitle: 'opérations de versement')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F1B440')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les retours',
-                                          number: 15,
-                                          subTitle: 'opérations de retour')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#87A0E5')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les magasin',
-                                          number: 15,
-                                          subTitle: 'magasin')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F56E98')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les réparations',
-                                          number: 15,
-                                          subTitle: 'réparations')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F1B440')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les commandes',
-                                          number: 15,
-                                          subTitle: 'opérations de commande')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#87A0E5')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les importations',
-                                          number: 15,
-                                          subTitle: 'importateur')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F56E98')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les importations',
-                                          number: 15,
-                                          subTitle:
-                                              'opérations d\'achat d\'importation')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F1B440')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les importations',
-                                          number: 15,
-                                          subTitle:
-                                              'opérations de versement d\'importation')
-                                    ],
-                                  ),
-                                  line(),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 48,
-                                        width: 2,
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#87A0E5')
-                                              .withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(4.0)),
-                                        ),
-                                      ),
-                                      number_function(
-                                          title: 'Les produits',
-                                          number: 15,
-                                          subTitle: 'produits')
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                                    ),
+                                  ],
+                                );
+                              }
+                            }
+                          }),
                     ),
                     line()
                   ],
@@ -405,7 +472,7 @@ class MediterranesnDietView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 4, bottom: 3),
                 child: Text(
-                  '${(number * animation!.value).toInt()}',
+                  '${(number * widget.animation!.value).toInt()}',
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontFamily: 'Roboto',
