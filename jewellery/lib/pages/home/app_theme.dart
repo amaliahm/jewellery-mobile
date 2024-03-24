@@ -87,3 +87,22 @@ class AppTheme {
     color: lightText, // was lightText
   );
 }
+
+Widget buttonAjouter({onTap, label}) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+        width: 120,
+        height: 50,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: const Color(0xFF4e5ae8),
+        ),
+        child: Center(
+          child: Text(
+            label,
+            style: const TextStyle(color: Colors.white),
+          ),
+        )),
+  );
+}
