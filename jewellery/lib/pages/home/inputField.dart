@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class MyInputField extends StatelessWidget {
   final String title;
@@ -45,21 +44,18 @@ class MyInputField extends StatelessWidget {
                 child: TextFormField(
                   readOnly: widget == null ? false : true,
                   autofocus: false,
-                  cursorColor:
-                      Get.isDarkMode ? Colors.grey[100] : Colors.grey[600],
+                  cursorColor: Colors.grey[600],
                   controller: controller,
                   style: subTitleStyle,
                   decoration: InputDecoration(
                     hintText: hint,
                     hintStyle: subTitleStyle,
-                    focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                            color: context.theme.colorScheme.background,
-                            width: 0)),
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                            color: context.theme.colorScheme.background,
-                            width: 0)),
+                    focusedBorder: const UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.transparent, width: 0)),
+                    enabledBorder: const UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.transparent, width: 0)),
                   ),
                 ),
               ),
@@ -74,20 +70,20 @@ class MyInputField extends StatelessWidget {
       ),
     );
   }
+}
 
-  TextStyle get titleStyle {
-    return TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
-      color: Get.isDarkMode ? Colors.white : Colors.black,
-    );
-  }
+TextStyle get titleStyle {
+  return const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: Colors.black,
+  );
+}
 
-  TextStyle get subTitleStyle {
-    return TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w400,
-      color: Get.isDarkMode ? Colors.grey[100] : Colors.grey[400],
-    );
-  }
+TextStyle get subTitleStyle {
+  return TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: Colors.grey[600],
+  );
 }

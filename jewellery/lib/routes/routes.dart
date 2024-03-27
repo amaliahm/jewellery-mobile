@@ -10,4 +10,5 @@ abstract class Routes {
   static const CODE = '/code_page';
   static const CLIENTS = '/clients';
   static const FOURNISSEURS = '/fournisseurs';
+  static const ADD_CLIENT = '/add_client';
 }

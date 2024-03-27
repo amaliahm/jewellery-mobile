@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:jewellery/pages/clients/ajouterClient.dart';
 import 'package:jewellery/pages/clients/clients.dart';
 import 'package:jewellery/pages/fournisseurs/fournisseur.dart';
 import 'package:jewellery/registration/login_screen.dart';
@@ -36,6 +37,10 @@ class AppPages {
     GetPage(
       name: Routes.FOURNISSEURS,
       page: () => const Fournisseurs(),
+    ),
+    GetPage(
+      name: Routes.ADD_CLIENT,
+      page: () => const AjouterClient(),
     ),
   ];
 }

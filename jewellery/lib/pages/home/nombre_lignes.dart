@@ -430,19 +430,6 @@ class _MediterranesnDietViewState extends State<MediterranesnDietView> {
     );
   }
 
-  Widget line() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 8),
-      child: Container(
-        height: 2,
-        decoration: const BoxDecoration(
-          color: Color(0xFFF2F3F8),
-          borderRadius: BorderRadius.all(Radius.circular(4.0)),
-        ),
-      ),
-    );
-  }
-
   Widget number_function(
       {required String title, required int number, required String subTitle}) {
     return Padding(
@@ -502,4 +489,17 @@ class _MediterranesnDietViewState extends State<MediterranesnDietView> {
       ),
     );
   }
+}
+
+Widget line() {
+  return Padding(
+    padding: const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 8),
+    child: Container(
+      height: 2,
+      decoration: const BoxDecoration(
+        color: Color(0xFFF2F3F8),
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+      ),
+    ),
+  );
 }

@@ -17,7 +17,7 @@ class AjouterListView extends StatefulWidget {
 class _AjouterListViewState extends State<AjouterListView>
     with TickerProviderStateMixin {
   AnimationController? animationController;
-  List<AjouterListData> mealsListData = AjouterListData.tabIconsList;
+  List<AjouterListData> clientsListData = AjouterListData.tabIconsList;
 
   @override
   void initState() {
@@ -53,11 +53,11 @@ class _AjouterListViewState extends State<AjouterListView>
               child: ListView.builder(
                 padding: const EdgeInsets.only(
                     top: 0, bottom: 0, right: 16, left: 16),
-                itemCount: mealsListData.length,
+                itemCount: clientsListData.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   final int count =
-                      mealsListData.length > 10 ? 10 : mealsListData.length;
+                      clientsListData.length > 10 ? 10 : clientsListData.length;
                   final Animation<double> animation =
                       Tween<double>(begin: 0.0, end: 1.0).animate(
                           CurvedAnimation(
@@ -65,9 +65,8 @@ class _AjouterListViewState extends State<AjouterListView>
                               curve: Interval((1 / count) * index, 1.0,
                                   curve: Curves.fastOutSlowIn)));
                   animationController?.forward();
-
-                  return MealsView(
-                    mealsListData: mealsListData[index],
+                  return ClientsView(
+                    clientsListData: clientsListData[index],
                     animation: animation,
                     animationController: animationController!,
                   );
@@ -81,12 +80,15 @@ class _AjouterListViewState extends State<AjouterListView>
   }
 }
 
-class MealsView extends StatelessWidget {
-  const MealsView(
-      {Key? key, this.mealsListData, this.animationController, this.animation})
+class ClientsView extends StatelessWidget {
+  const ClientsView(
+      {Key? key,
+      this.clientsListData,
+      this.animationController,
+      this.animation})
       : super(key: key);
 
-  final AjouterListData? mealsListData;
+  final AjouterListData? clientsListData;
   final AnimationController? animationController;
   final Animation<double>? animation;
 
@@ -112,15 +114,15 @@ class MealsView extends StatelessWidget {
                       decoration: BoxDecoration(
                         boxShadow: <BoxShadow>[
                           BoxShadow(
-                              color: HexColor(mealsListData!.endColor)
+                              color: HexColor(clientsListData!.endColor)
                                   .withOpacity(0.6),
                               offset: const Offset(1.1, 4.0),
                               blurRadius: 8.0),
                         ],
                         gradient: LinearGradient(
                           colors: <HexColor>[
-                            HexColor(mealsListData!.startColor),
-                            HexColor(mealsListData!.endColor),
+                            HexColor(clientsListData!.startColor),
+                            HexColor(clientsListData!.endColor),
                           ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
@@ -140,7 +142,7 @@ class MealsView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              mealsListData!.titleTxt,
+                              clientsListData!.titleTxt,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                 fontFamily: 'Roboto',
@@ -167,12 +169,21 @@ class MealsView extends StatelessWidget {
                                       blurRadius: 8.0),
                                 ],
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: Icon(
-                                  Icons.add,
-                                  color: HexColor(mealsListData!.endColor),
-                                  size: 24,
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              clientsListData!.to));
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(6.0),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: HexColor(clientsListData!.endColor),
+                                    size: 24,
+                                  ),
                                 ),
                               ),
                             ),
@@ -199,7 +210,7 @@ class MealsView extends StatelessWidget {
                     child: SizedBox(
                       width: 80,
                       height: 80,
-                      child: Image.asset(mealsListData!.imagePath),
+                      child: Image.asset(clientsListData!.imagePath),
                     ),
                   )
                 ],

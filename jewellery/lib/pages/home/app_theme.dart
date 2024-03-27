@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jewellery/pages/home/nombre_lignes.dart';
 
 class AppTheme {
   AppTheme._();
@@ -84,7 +85,7 @@ class AppTheme {
     fontWeight: FontWeight.w400,
     fontSize: 12,
     letterSpacing: 0.2,
-    color: lightText, // was lightText
+    color: lightText,
   );
 }
 
@@ -96,7 +97,7 @@ Widget buttonAjouter({onTap, label}) {
         height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: const Color(0xFF4e5ae8),
+          color: HexColor('#FFB295'),
         ),
         child: Center(
           child: Text(
