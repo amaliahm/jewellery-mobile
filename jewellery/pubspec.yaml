@@ -54,9 +54,6 @@ flutter:
     - assets/images/supportIcon.png
     - assets/icons/
     - assets/
-    - assets/design_course/
-    - assets/fitness_app/
-    - assets/hotel/
 
   # fonts:
   #   - family: Schyler
